@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>টিউশন হিসাব</title>
+<meta name="theme-color" content="#176b55">
+<meta name="description" content="ছাত্রছাত্রীর উপস্থিতি, টিউশন ফি ও পেমেন্টের সহজ হিসাব">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1c2430;--mu:#6b7686;--ac:#2b7a5b;--bad:#c0392b;--bd:#e2e6ec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--card:#1e242b;--tx:#e8ecf1;--mu:#93a0b0;--ac:#4cb58a;--bad:#e86a5c;--bd:#2d353f}}
+*{box-sizing:border-box}button,input,label{touch-action:manipulation;-webkit-tap-highlight-color:transparent}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;max-width:560px;margin:auto;padding:14px}
+h1{font-size:20px;margin:4px 0 12px}.tabs{display:flex;gap:6px;margin-bottom:12px}
+.tabs button{flex:1;padding:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font-size:14px}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:10px}
+input{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font-size:16px}
+.row{display:flex;gap:8px;align-items:center}.row>*{flex:1}.row>button.s{flex:0 0 auto}
+.name{font-weight:600;margin-bottom:8px}.two{display:flex;gap:8px}
+.two button{flex:1;padding:10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:15px}
+.two button.p.on{background:var(--ac);color:#fff;border-color:var(--ac)}.two button.a.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+button.s{padding:10px 14px;border-radius:8px;border:0;background:var(--ac);color:#fff;font-size:15px}
+.mu{color:var(--mu);font-size:13px}.del{background:none;border:0;color:var(--bad);font-size:13px;padding:4px}
+.f{display:flex;gap:8px;margin-top:8px}.f label{flex:1;font-size:12px;color:var(--mu)}.f input{margin-top:3px}.bx{margin-top:8px;padding:8px;border-radius:8px;background:var(--bg);font-size:14px;line-height:1.7}.pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;margin:2px 3px 0 0;border:1px solid var(--bd)}
+.pill.p{color:var(--ac)}.pill.a{color:var(--bad)}.stat{display:flex;gap:14px;margin-top:6px;font-size:14px}
+
+:root{--bg:#f3f6f5;--card:#ffffff;--tx:#172b27;--mu:#71817c;--ac:#176b55;--bad:#c44747;--bd:#e1e9e5}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a17;--card:#1a2823;--tx:#eaf4ef;--mu:#a0b3aa;--ac:#42b58d;--bad:#ff7777;--bd:#2b3d35}}
+body{max-width:620px;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(100px + env(safe-area-inset-bottom,0px));font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--bg)}
+h1{font-size:25px;letter-spacing:-.5px;margin:5px 0 4px;font-weight:800}.tabs{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,620px);margin:0;padding:9px 10px calc(9px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--bd);box-shadow:0 -6px 24px #14231b12;gap:6px}
+.tabs button{border:0;background:transparent;border-radius:13px;padding:11px 4px;font-size:12px;font-weight:650;min-height:48px}.tabs button.on{background:var(--ac);color:#fff;box-shadow:0 4px 10px #176b5530}
+.card{border:1px solid var(--bd);border-radius:17px;padding:15px;margin-bottom:12px;box-shadow:0 4px 15px #14231b08}.card .name{font-size:16px;font-weight:750}.mu{line-height:1.55}.two{gap:9px}.two button{border-radius:12px;padding:13px 8px;font-weight:650}.two button.p.on{box-shadow:0 3px 10px #176b5528}.two button.a.on{box-shadow:0 3px 10px #c4474728}input{border-radius:11px;padding:12px;min-height:45px;border-color:var(--bd)}button.s{border-radius:12px;padding:12px 16px;font-weight:700;min-height:44px}.del{font-weight:650}.f{gap:10px}.f label{font-size:13px}.bx{border-radius:12px;padding:12px;line-height:1.9}.pill{padding:5px 10px;margin:4px 3px 0 0}.stat{flex-wrap:wrap}
+#st{display:inline-flex;background:var(--card);border:1px solid var(--bd);padding:6px 10px;border-radius:99px;margin:4px 0 15px!important;font-size:11px!important}
+#toast{z-index:50;bottom:calc(82px + env(safe-area-inset-bottom,0px))!important;border-radius:99px!important;box-shadow:0 5px 20px #0003}
+#v:empty{display:none}button:active{transform:scale(.985)}
+@media(min-width:520px){body{padding-left:22px;padding-right:22px}.tabs{padding-left:22px;padding-right:22px}}
+</style></head><body>
+<h1>📚 টিউশন হিসাব</h1>
+<div id="st" class="mu" style="margin:-6px 0 10px"></div>
+<div class="tabs"><button id="t0" class="on">📅 আজ</button><button id="t1">🗓️ ইতিহাস</button><button id="t2">👨‍🎓 ছাত্র</button><button id="t3">💾 ব্যাকআপ</button></div>
+<div id="v"></div>
+<div id="toast" style="position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#333;color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90%"></div>
+<script>
+var pend=null,pt=null;function ask(k){pend=k;clearTimeout(pt);pt=setTimeout(function(){pend=null;render()},4000);render()}
+function toast(m){var e=document.getElementById('toast');e.textContent=m;e.style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.opacity=0},2500)}
+var S={students:[],records:{}},tab=0,date=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10),ref=null,timer=null;
+function td(){return new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10)}
+var bn=function(n){return String(n).replace(/\d/g,function(d){return"০১২৩৪৫৬৭৮৯"[d]})};
+function load(){try{var x=JSON.parse(localStorage.getItem("tuition")||"null");if(x)S=x}catch(e){}}
+var dirty=localStorage.getItem("tuition_dirty")=="1";
+function setSt(){var el=document.getElementById("st");if(!el)return;el.textContent="📱 হিসাব শুধু এই ফোনে জমা আছে"}
+function push(){if(!ref||!navigator.onLine||!dirty)return;var t=S.ts;
+ try{ref.set(S).then(function(){if(S.ts==t){dirty=false;try{localStorage.removeItem("tuition_dirty")}catch(e){}}setSt()},function(){})}catch(e){}}
+function save(){S.ts=Date.now();dirty=true;try{localStorage.setItem("tuition",JSON.stringify(S));localStorage.setItem("tuition_dirty","1")}catch(e){}
+ setSt();clearTimeout(timer);timer=setTimeout(push,400)}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function fd(d){var x=new Date(d+"T00:00:00");return x.toLocaleDateString("bn-BD",{weekday:"short",day:"numeric",month:"short",year:"numeric"})}
+function render(){
+ var keep={};["nm","sal","dpm"].forEach(function(k){var e=document.getElementById(k);if(e)keep[k]=e.value});
+ ["t0","t1","t2","t3"].forEach(function(id,i){document.getElementById(id).className=i==tab?"on":""});
+ var h="";
+ if(tab==0){
+  h+='<div class="card"><label class="mu">তারিখ</label><input type="date" id="dt" value="'+date+'"></div>';
+  if(!S.students.length)h+='<div class="card mu">আগে "ছাত্র/ছাত্রী" ট্যাবে গিয়ে নাম যোগ করো।</div>';
+  var r=S.records[date]||{};
+  S.students.forEach(function(s){var m=r[s.id];
+   h+='<div class="card"><div class="name">'+esc(s.name)+'</div><div class="two"><button class="p'+(m=="p"?" on":"")+'" data-m="p" data-id="'+s.id+'">✅ পড়িয়েছি</button><button class="a'+(m=="a"?" on":"")+'" data-m="a" data-id="'+s.id+'">❌ যাইনি</button></div></div>'});
+ }
+ if(tab==1){
+  var ds=Object.keys(S.records).sort().reverse(),any=false;
+  ds.forEach(function(d){var r=S.records[d],ps="";
+   S.students.forEach(function(s){if(r[s.id])ps+='<span class="pill '+r[s.id]+'">'+(r[s.id]=="p"?"✅ ":"❌ ")+esc(s.name)+'</span>'});
+   if(ps){any=true;h+='<div class="card"><b>'+fd(d)+'</b><div>'+ps+'</div></div>'}});
+  if(!any)h='<div class="card mu">এখনো কোনো হিসাব নেই।</div>';
+ }
+ if(tab==2){
+  h+='<div class="card"><input id="nm" placeholder="নতুন নামে লেখো"><div class="f"><label>মাসিক বেতন (টাকা)<input id="sal" type="number" inputmode="numeric" placeholder="যেমন ১০০০"></label><label>কত দিনে ১ মাস<input id="dpm" type="number" inputmode="numeric" value="12"></label></div><button class="s" id="add" style="width:100%;margin-top:10px">+ যোগ করো</button></div>';
+  S.students.forEach(function(s){var p=0,a=0;
+   Object.keys(S.records).forEach(function(d){var m=S.records[d][s.id];if(m=="p")p++;if(m=="a")a++});
+   var dp=+s.dpm||12,sl=+s.sal||0,mo=Math.floor(p/dp),rem=p%dp,full=mo*sl,part=Math.round(rem/dp*sl),pays=s.pays||[],pd=pays.reduce(function(x,y){return x+(+y.amt||0)},0),due=full-pd;
+   h+='<div class="card"><div class="row"><div class="name" style="margin:0">'+esc(s.name)+'</div><button class="del" style="flex:0" data-del="'+s.id+'">'+(pend=="d"+s.id?"⚠️ নিশ্চিত? আবার চাপো":"মুছো")+'</button></div>'
+   +'<div class="f"><label>মাসিক বেতন<input type="number" inputmode="numeric" data-f="sal" data-id="'+s.id+'" value="'+(s.sal||"")+'"></label><label>কত দিনে ১ মাস<input type="number" inputmode="numeric" data-f="dpm" data-id="'+s.id+'" value="'+dp+'"></label></div>'
+   +'<div class="bx">✅ পড়িয়েছি: '+bn(p)+' দিন &nbsp; ❌ যাইনি: '+bn(a)+' দিন<br>পূর্ণ মাস: <b>'+bn(mo)+'</b> &nbsp; চলতি মাস: '+bn(rem)+'/'+bn(dp)+' দিন<br>পূর্ণ মাসের প্রাপ্য: <b>'+bn(full)+' টাকা</b><br>পেয়েছি: <b>'+bn(pd)+' টাকা</b><br>'+(due>=0?'বাকি: <b style="color:var(--bad)">'+bn(due)+' টাকা</b>':'অগ্রিম পেয়েছ: <b>'+bn(-due)+' টাকা</b>')+(sl&&rem?'<br><span class="mu">চলতি মাসসহ আনুমানিক: '+bn(full+part)+' টাকা</span>':'')+'</div>'
+   +'<div class="f"><label>টাকা পেয়েছি<input type="number" inputmode="numeric" id="pa_'+s.id+'" placeholder="পরিমাণ"></label><label>তারিখ<input type="date" id="pd_'+s.id+'" value="'+td()+'"></label></div><button class="s" style="width:100%;margin-top:8px" data-pay="'+s.id+'">💰 টাকা পেয়েছি লিখে রাখো</button>'
+   +pays.map(function(y,i){return'<div class="row mu" style="margin-top:6px"><span>'+fd(y.d)+'</span><span><b>'+bn(y.amt)+' টাকা</b></span><button class="del" style="flex:0" data-dp="'+s.id+'" data-i="'+i+'">'+(pend=="p"+s.id+i?"⚠️ নিশ্চিত?":"মুছো")+'</button></div>'}).join('')
+   +'</div>'});
+ }
+ if(tab==3){h+='<div class="card"><div class="name">📲 অ্যাপের মতো ব্যবহার</div><div class="mu">এই ফাইলটি HTTPS-এ হোস্ট করলে Android/ iPhone-এ Add to Home Screen করে আলাদা অ্যাপের মতো চালাতে পারবে। Android Chrome: ⋮ মেনু → Install app / Add to Home screen। iPhone Safari: Share → Add to Home Screen।</div></div><div class="card"><div class="name">💾 ব্যাকআপ</div><div class="mu" style="margin-bottom:10px">হিসাব শুধু এই ফোনে আছে। browser-এর data মুছলে বা ফোন বদলালে হারিয়ে যাবে। তাই মাঝে মাঝে ব্যাকআপ ফাইল নামিয়ে রাখো (WhatsApp বা Drive-এ পাঠিয়ে রাখলে ভালো)।</div><button class="s" id="bk" style="width:100%">⬇️ ব্যাকআপ ফাইল নামাও</button></div><div class="card"><div class="name">♻️ ব্যাকআপ থেকে ফেরত আনো</div><div class="mu" style="margin-bottom:10px">সাবধান: এতে এখনকার হিসাব মুছে ব্যাকআপের হিসাব বসবে।</div><input type="file" id="rs" accept=".json,application/json"></div>'}
+ document.getElementById("v").innerHTML=h;
+ Object.keys(keep).forEach(function(k){var e=document.getElementById(k);if(e&&keep[k]!=="")e.value=keep[k]});
+}
+document.addEventListener("click",function(e){var t=e.target.closest?(e.target.closest("button")||e.target):e.target;
+ if(t.id&&t.id[0]=="t"&&t.id.length==2){tab=+t.id[1];render();return}
+ if(t.dataset.m){var r=S.records[date]=S.records[date]||{};if(r[t.dataset.id]==t.dataset.m)delete r[t.dataset.id];else r[t.dataset.id]=t.dataset.m;save();render();return}
+ if(t.id=="bk"){try{var b=new Blob([JSON.stringify(S)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="tuition-backup-"+td()+".json";document.body.appendChild(a);a.click();a.remove();toast("ব্যাকআপ ফাইল নামছে")}catch(x){toast("ব্যাকআপ নামানো গেল না")}return}
+ if(t.id=="add"){var n=document.getElementById("nm").value.trim();if(!n){toast("আগে নাম লেখো");return}
+  var sv=+document.getElementById("sal").value||0,dv=+document.getElementById("dpm").value||12;S.students.push({id:"s"+Date.now(),name:n,sal:sv,dpm:dv});
+  document.getElementById("nm").value="";document.getElementById("sal").value="";document.getElementById("dpm").value="12";save();render();return}
+ if(t.dataset.pay){var id=t.dataset.pay,am=+document.getElementById("pa_"+id).value,dd=document.getElementById("pd_"+id).value||td();
+  if(!(am>0)){toast("কত টাকা পেয়েছ লেখো");return}
+  var st=S.students.filter(function(x){return x.id==id})[0];st.pays=st.pays||[];st.pays.push({d:dd,amt:am});st.pays.sort(function(a,b){return a.d<b.d?1:-1});save();render();return}
+ if(t.dataset.dp){var k="p"+t.dataset.dp+t.dataset.i;if(pend!=k){ask(k);return}pend=null;var st2=S.students.filter(function(x){return x.id==t.dataset.dp})[0];st2.pays.splice(+t.dataset.i,1);save();render();return}
+ if(t.dataset.del){var k2="d"+t.dataset.del;if(pend!=k2){ask(k2);return}pend=null;S.students=S.students.filter(function(x){return x.id!=t.dataset.del});save();render()}
+});
+document.addEventListener("change",function(e){var t=e.target;
+ if(t.id=="rs"&&t.files&&t.files[0]){var fr=new FileReader();fr.onload=function(){try{var d=JSON.parse(fr.result);if(!d||!Array.isArray(d.students)||typeof d.records!="object")throw 0;S=d;save();tab=0;render();toast("ব্যাকআপ থেকে হিসাব ফিরে এসেছে")}catch(x){toast("এটা সঠিক ব্যাকআপ ফাইল না")}};fr.readAsText(t.files[0]);return}
+ if(t.dataset.f){var st=S.students.filter(function(x){return x.id==t.dataset.id})[0];if(st){st[t.dataset.f]=+t.value||(t.dataset.f=="dpm"?12:0);save();render()}return}
+ if(e.target.id=="dt"&&e.target.value){date=e.target.value;render()}});
+load();render();
+setSt();
+// Installable offline app when hosted on HTTPS or localhost.
+if('serviceWorker' in navigator && location.protocol !== 'file:'){
+ window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});
+}
+</script></body></html>
